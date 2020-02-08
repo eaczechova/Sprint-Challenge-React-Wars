@@ -14,31 +14,43 @@ const App = () => {
 	// sync up with, if any.
 
 	const [data, setData] = useState([]);
+	const [page, setPage] = useState(1);
+
 	const effectCallback = () => {
 		axios
-			.get('https://swapi.co/api/people/1/')
+			.get(`https://swapi.co/api/people/${page}/`)
 			.then(response => setData(response.data))
 			.catch(error => console.log(error));
 	};
 
-	useEffect(effectCallback, []);
-	console.log(data);
+	useEffect(effectCallback, [page]);
+
+	const App = styled.div`
+		text-align: center;
+	`;
+	const MainHeading = styled.h1`
+		color: #6d5130;
+		text-shadow: 1px 1px 5px #fff;
+	`;
+
 	return (
-		<div className="App">
-			<h1 className="Header">React Wars</h1>
+		<App>
+			<MainHeading className="Header">React Wars</MainHeading>
 			<Card data={data} />
 			<Pagination className="pagination" aria-label="Page navigation example">
-				<PaginationItem disabled>
+				<PaginationItem
+					onClick={() => (page === 1 ? setPage(1) : setPage(page - 1))}
+				>
 					<PaginationLink previous href="#" />
 				</PaginationItem>
 				<PaginationItem>
-					<PaginationLink href="#">1</PaginationLink>
+					<PaginationLink href="#">{page}</PaginationLink>
 				</PaginationItem>
 				<PaginationItem>
-					<PaginationLink next href="#" />
+					<PaginationLink next href="#" onClick={() => setPage(page + 1)} />
 				</PaginationItem>
 			</Pagination>
-		</div>
+		</App>
 	);
 };
 

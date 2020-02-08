@@ -13,24 +13,26 @@ const Description = props => {
 		font-size: 14px;
 		letter-spacing: 7px;
 		font-weight: 400;
-		color: #bd993c;
-		margin: 10px auto 0;
-		padding: 0 5px 10px;
-		border-bottom: 1px solid #bd993c;
+		color: #6d5130;
+		margin: 10px auto 20px;
+		padding: 0 5px 20px;
+		border-bottom: 1px solid #6d5130;
 	`;
 
 	const DescriptionText = styled.p`
-		font-size: 15px;
+		font-size: 13px;
 		margin: 0 auto;
 		text-align: left;
 		line-height: 22px;
 		width: 75%;
 		padding: 10px 30px;
+		color: #fff;
+		letter-spacing: 2px;
 	`;
 
 	const DescriptionName = styled.span`
 		text-transform: uppercase;
-		color: lightgray;
+		color: #6d5130;
 	`;
 
 	return (
